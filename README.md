@@ -115,7 +115,14 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 -> Example command
-git clone https://github.com/Yidnekachew-cmd/Todo-List.git
+git clone git@github.com:Yidnekachew-cmd/Todo-List.git
+
+### Install
+
+To run the webpack
+-> npm install webpack
+-> npm run build
+-> npm start
 
 ### Usage
 
