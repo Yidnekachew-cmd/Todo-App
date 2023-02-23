@@ -1,0 +1,117 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  background-color: #ece9e9;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+}
+
+.todo-container {
+  width: 45%;
+  height: auto;
+  margin: 0 auto;
+  margin: 18%;
+  background-color: #fff;
+  border-radius: 1rem;
+}
+
+.todo-container .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+.todo-container .refresh {
+  width: 4%;
+  height: 4%;
+  cursor: pointer;
+}
+
+.refresh img {
+  width: 100%;
+}
+
+hr {
+  border: 1px solid #ddd;
+}
+
+.add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.add .input {
+  width: 100%;
+  border: 0.5px solid #ddd;
+  font-size: 1.2rem;
+  font-style: italic;
+
+  /* color: #ddd; */
+  padding: 1rem;
+}
+
+.add .add-logo {
+  width: 4%;
+  height: 4%;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+
+.add-logo img {
+  width: 100%;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  list-style-type: none;
+}
+
+.list-container .list-item {
+  padding: 0.6rem 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.list-container .list-para {
+  font-size: 1.1rem;
+  color: #606060;
+  width: 100%;
+}
+
+.list-container .dot {
+  justify-self: flex-end;
+  width: 4%;
+  height: 4%;
+  cursor: pointer;
+}
+
+.dot img {
+  width: 100%;
+}
+
+.clear {
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 1rem;
+  background-color: #e7dfdf;
+}
