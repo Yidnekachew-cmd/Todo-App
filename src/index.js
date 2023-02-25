@@ -1,53 +1,38 @@
 import './index.css';
-import Icon from './Icon/more.svg';
 import IconOne from './Icon/Cached.svg';
 import IconTwo from './Icon/add.svg';
+import addTodo from './modules/addTodo.js';
+import populateList from './modules/populateList.js';
+import displayTodos from './modules/displayTodo.js';
 
 // select elements and store them in a variable
-const listContainer = document.querySelector('.list-container');
-let listItem = document.createElement('li');
 const refreshLogo = document.querySelector('.refresh');
 refreshLogo.innerHTML = ` <img src="${IconOne}" alt="Cached logo" />`;
 const addLogo = document.querySelector('.add-logo');
 addLogo.innerHTML = ` <img src="${IconTwo}" alt="add logo" />`;
+const input = document.getElementsByTagName('input')[0];
+const add = document.querySelector('.add-logo');
 
-// create array to store the task in the form of objects
-const todoList = [
-  {
-    index: 1,
-    description: 'playing keyboard',
-    completed: false,
-  },
-  {
-    index: 2,
-    description: 'play football',
-    completed: false,
-  },
-  {
-    index: 3,
-    description: 'coding',
-    completed: false,
-  },
-];
+// creating an empty array
+const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
-// function to display the todo list
-const displayTodos = () => {
-  for (let i = 0; i < todoList.length; i += 1) {
-    listItem = document.createElement('li');
-    listItem.classList = 'list-item';
-    listItem.innerHTML = `
-      <input
-            type="checkbox"
-            name="checkbox"
-            id="checkbox"
-            class="checkbox-${i}"
-          />
-
-          <p class="list-para">${todoList[i].description}</p>
-          <div class="dot"><img src="${Icon}" alt="more logo" /></div>`;
-    listContainer.appendChild(listItem);
+// Event listener for adding user input values
+add.addEventListener('click', (e) => {
+  e.preventDefault();
+  const inputData = input.value.trim();
+  if (inputData !== '') {
+    addTodo(todoList);
   }
-};
+});
+
+// Event listener for adding user input values
+input.addEventListener('keyup', (e) => {
+  e.preventDefault();
+  const inputData = input.value.trim();
+  if (inputData !== '' && e.keyCode === 13) {
+    addTodo(todoList);
+  }
+});
 
 // calling the function to display
-displayTodos();
+populateList(displayTodos(todoList));
