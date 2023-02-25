@@ -1,6 +1,6 @@
-import Icon from "../Icon/more.svg";
-import { getData, addData } from "./localStorage.js";
-import populateList from "./populateList.js";
+import Icon from '../Icon/more.svg';
+import { getData, addData } from './localStorage.js';
+import populateList from './populateList.js';
 
 // adjusting index
 const adjustIndex = (todoList) => {
@@ -19,63 +19,63 @@ const removeTodo = (index, todoList) => {
 
 // function to display the todo list
 const displayTodos = (todoList) => {
-  const input = document.getElementsByTagName("input")[0];
+  const input = document.getElementsByTagName('input')[0];
   getData(todoList);
   const listItems = todoList.map((myTodo, index) => {
-    input.value = "";
+    input.value = '';
 
     // Creating list item
-    const listItem = document.createElement("li");
-    listItem.classList = "list-item";
+    const listItem = document.createElement('li');
+    listItem.classList = 'list-item';
 
     // assigning checkBox for each list
-    const checkBox = document.createElement("input");
-    checkBox.type = "checkbox";
-    checkBox.className = "checkbox";
-    checkBox.name = "checkbox";
+    const checkBox = document.createElement('input');
+    checkBox.type = 'checkbox';
+    checkBox.className = 'checkbox';
+    checkBox.name = 'checkbox';
 
     // assigning paragraph for each list
-    const para = document.createElement("input");
-    para.type = "text";
-    para.className = "list-para";
+    const para = document.createElement('input');
+    para.type = 'text';
+    para.className = 'list-para';
     para.id = `${myTodo.index}`;
     para.value = `${myTodo.description}`;
-    para.style.border = "none";
-    para.style.outline = "none";
+    para.style.border = 'none';
+    para.style.outline = 'none';
 
-    para.addEventListener("input", () => {
+    para.addEventListener('input', () => {
       todoList[index].description = para.value;
       addData(todoList);
     });
 
-    checkBox.addEventListener("change", () => {
+    checkBox.addEventListener('change', () => {
       myTodo.completed = true;
       if (myTodo.completed === true) {
-        para.style.textDecoration = "line-through";
+        para.style.textDecoration = 'line-through';
       } else {
-        para.style.textDecoration = "none";
+        para.style.textDecoration = 'none';
       }
       addData(todoList);
     });
 
     // assigning more image container for each list
-    const imgDiv = document.createElement("div");
-    imgDiv.className = "dot";
-    imgDiv.addEventListener("click", () => {
-      imgDiv.previousElementSibling.style.display = "block";
+    const imgDiv = document.createElement('div');
+    imgDiv.className = 'dot';
+    imgDiv.addEventListener('click', () => {
+      imgDiv.previousElementSibling.style.display = 'block';
     });
 
     // assigning more image for each list
-    const imgMore = document.createElement("img");
-    imgMore.className = "more";
-    imgMore.alt = "more logo";
+    const imgMore = document.createElement('img');
+    imgMore.className = 'more';
+    imgMore.alt = 'more logo';
     imgMore.src = `${Icon}`;
 
     // delete button
-    const removeBtn = document.createElement("button");
-    removeBtn.textContent = "remove";
-    removeBtn.style.display = "none";
-    removeBtn.addEventListener("click", () => {
+    const removeBtn = document.createElement('button');
+    removeBtn.textContent = 'remove';
+    removeBtn.style.display = 'none';
+    removeBtn.addEventListener('click', () => {
       removeTodo(index, todoList);
       adjustIndex(todoList);
       addData(todoList);
