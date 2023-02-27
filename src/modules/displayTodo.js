@@ -13,14 +13,13 @@ const adjustIndex = (todoList) => {
 const removeTodo = (index, todoList) => {
   todoList.splice(index, 1);
   adjustIndex(todoList);
-  // addData(todoList);
-  // populateList(displayTodos(todoList));
 };
 
 // function to display the todo list
 const displayTodos = (todoList) => {
   const input = document.getElementsByTagName('input')[0];
   getData(todoList);
+
   const listItems = todoList.map((myTodo, index) => {
     input.value = '';
 

@@ -4,8 +4,11 @@ import IconTwo from './Icon/add.svg';
 import addTodo from './modules/addTodo.js';
 import populateList from './modules/populateList.js';
 import displayTodos from './modules/displayTodo.js';
+import clearCompleted from './modules/clear.js';
+import { addData } from './modules/localStorage.js';
 
 // select elements and store them in a variable
+const clear = document.querySelector('.clear');
 const refreshLogo = document.querySelector('.refresh');
 refreshLogo.innerHTML = ` <img src="${IconOne}" alt="Cached logo" />`;
 const addLogo = document.querySelector('.add-logo');
@@ -14,7 +17,7 @@ const input = document.getElementsByTagName('input')[0];
 const add = document.querySelector('.add-logo');
 
 // creating an empty array
-const todoList = JSON.parse(localStorage.getItem('todoList')) || [];
+let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
 
 // Event listener for adding user input values
 add.addEventListener('click', (e) => {
@@ -34,5 +37,11 @@ input.addEventListener('keyup', (e) => {
   }
 });
 
+clear.addEventListener('click', () => {
+  todoList = clearCompleted(todoList);
+  addData(todoList);
+  populateList(displayTodos(todoList));
+});
+
 // calling the function to display
-populateList(displayTodos(todoList));
+if (todoList.length) populateList(displayTodos(todoList));
