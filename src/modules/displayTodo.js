@@ -48,10 +48,11 @@ const displayTodos = (todoList) => {
     });
 
     checkBox.addEventListener('change', () => {
-      myTodo.completed = true;
       if (myTodo.completed === true) {
+        myTodo.completed = false;
         para.style.textDecoration = 'line-through';
       } else {
+        myTodo.completed = true;
         para.style.textDecoration = 'none';
       }
       addData(todoList);
