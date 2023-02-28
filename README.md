@@ -93,7 +93,7 @@ After you're finished please remove all the comments and instructions!
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-- [Coming soon...](#)
+- [Live Demo](https://yidnekachew-cmd.github.io/Todo-List/dist/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

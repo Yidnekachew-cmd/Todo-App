@@ -1,5 +1,5 @@
 {
-  "name": "todo",
+  "name": "Todo-List",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dselasea/todo.git"
+    "url": "git+https://github.com/Yidnekachew-cmd/Todo-List.git"
   },
   "keywords": [],
   "author": "",

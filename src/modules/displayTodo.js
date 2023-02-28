@@ -1,4 +1,5 @@
 import Icon from '../Icon/more.svg';
+import IconNew from '../Icon/delete.svg';
 import { getData, addData } from './localStorage.js';
 import populateList from './populateList.js';
 
@@ -13,14 +14,13 @@ const adjustIndex = (todoList) => {
 const removeTodo = (index, todoList) => {
   todoList.splice(index, 1);
   adjustIndex(todoList);
-  // addData(todoList);
-  // populateList(displayTodos(todoList));
 };
 
 // function to display the todo list
 const displayTodos = (todoList) => {
   const input = document.getElementsByTagName('input')[0];
   getData(todoList);
+
   const listItems = todoList.map((myTodo, index) => {
     input.value = '';
 
@@ -33,6 +33,8 @@ const displayTodos = (todoList) => {
     checkBox.type = 'checkbox';
     checkBox.className = 'checkbox';
     checkBox.name = 'checkbox';
+    checkBox.checked = myTodo.completed;
+    checkBox.style.cursor = 'pointer';
 
     // assigning paragraph for each list
     const para = document.createElement('input');
@@ -41,7 +43,9 @@ const displayTodos = (todoList) => {
     para.id = `${myTodo.index}`;
     para.value = `${myTodo.description}`;
     para.style.border = 'none';
-    para.style.outline = 'none';
+    para.style.outlineColor = 'rgb(125, 231, 255)';
+    para.style.textDecoration = myTodo.completed ? 'line-through' : 'none';
+    para.style.textDecorationColor = '#ff8975';
 
     para.addEventListener('input', () => {
       todoList[index].description = para.value;
@@ -49,12 +53,9 @@ const displayTodos = (todoList) => {
     });
 
     checkBox.addEventListener('change', () => {
-      myTodo.completed = true;
-      if (myTodo.completed === true) {
-        para.style.textDecoration = 'line-through';
-      } else {
-        para.style.textDecoration = 'none';
-      }
+      myTodo.completed = !myTodo.completed;
+      para.style.textDecoration = myTodo.completed ? 'line-through' : 'none';
+      para.style.textDecorationColor = '#ff8975';
       addData(todoList);
     });
 
@@ -63,6 +64,7 @@ const displayTodos = (todoList) => {
     imgDiv.className = 'dot';
     imgDiv.addEventListener('click', () => {
       imgDiv.previousElementSibling.style.display = 'block';
+      imgDiv.style.display = 'none';
     });
 
     // assigning more image for each list
@@ -72,8 +74,9 @@ const displayTodos = (todoList) => {
     imgMore.src = `${Icon}`;
 
     // delete button
-    const removeBtn = document.createElement('button');
-    removeBtn.textContent = 'remove';
+    const removeBtn = document.createElement('img');
+    removeBtn.className = 'dot';
+    removeBtn.src = `${IconNew}`;
     removeBtn.style.display = 'none';
     removeBtn.addEventListener('click', () => {
       removeTodo(index, todoList);
