@@ -1,4 +1,5 @@
 import Icon from '../Icon/more.svg';
+import IconNew from '../Icon/delete.svg';
 import { getData, addData } from './localStorage.js';
 import populateList from './populateList.js';
 
@@ -32,6 +33,7 @@ const displayTodos = (todoList) => {
     checkBox.type = 'checkbox';
     checkBox.className = 'checkbox';
     checkBox.name = 'checkbox';
+    checkBox.checked = myTodo.completed;
 
     // assigning paragraph for each list
     const para = document.createElement('input');
@@ -40,7 +42,8 @@ const displayTodos = (todoList) => {
     para.id = `${myTodo.index}`;
     para.value = `${myTodo.description}`;
     para.style.border = 'none';
-    para.style.outline = 'none';
+    para.style.outlineColor = 'rgb(125, 231, 255)';
+    para.style.textDecoration = myTodo.completed ? 'line-through' : 'none';
 
     para.addEventListener('input', () => {
       todoList[index].description = para.value;
@@ -48,13 +51,8 @@ const displayTodos = (todoList) => {
     });
 
     checkBox.addEventListener('change', () => {
-      if (myTodo.completed === true) {
-        myTodo.completed = false;
-        para.style.textDecoration = 'line-through';
-      } else {
-        myTodo.completed = true;
-        para.style.textDecoration = 'none';
-      }
+      myTodo.completed = !myTodo.completed;
+      para.style.textDecoration = myTodo.completed ? 'line-through' : 'none';
       addData(todoList);
     });
 
@@ -63,6 +61,7 @@ const displayTodos = (todoList) => {
     imgDiv.className = 'dot';
     imgDiv.addEventListener('click', () => {
       imgDiv.previousElementSibling.style.display = 'block';
+      imgDiv.style.display = 'none';
     });
 
     // assigning more image for each list
@@ -72,8 +71,9 @@ const displayTodos = (todoList) => {
     imgMore.src = `${Icon}`;
 
     // delete button
-    const removeBtn = document.createElement('button');
-    removeBtn.textContent = 'remove';
+    const removeBtn = document.createElement('img');
+    removeBtn.className = 'dot';
+    removeBtn.src = `${IconNew}`;
     removeBtn.style.display = 'none';
     removeBtn.addEventListener('click', () => {
       removeTodo(index, todoList);

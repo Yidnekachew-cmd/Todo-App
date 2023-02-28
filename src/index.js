@@ -5,7 +5,7 @@ import addTodo from './modules/addTodo.js';
 import populateList from './modules/populateList.js';
 import displayTodos from './modules/displayTodo.js';
 import clearCompleted from './modules/clear.js';
-import { addData } from './modules/localStorage.js';
+import { addData, getData } from './modules/localStorage.js';
 
 // select elements and store them in a variable
 const clear = document.querySelector('.clear');
@@ -45,3 +45,8 @@ clear.addEventListener('click', () => {
 
 // calling the function to display
 if (todoList.length) populateList(displayTodos(todoList));
+window.onload = () => {
+  // checkBox.checked === checkBox.checked;
+  getData(todoList);
+  // populateList(displayTodos(todoList));
+};
