@@ -5,7 +5,7 @@ import addTodo from './modules/addTodo.js';
 import populateList from './modules/populateList.js';
 import displayTodos from './modules/displayTodo.js';
 import clearCompleted from './modules/clear.js';
-import { addData, getData } from './modules/localStorage.js';
+import { addData } from './modules/localStorage.js';
 
 // select elements and store them in a variable
 const clear = document.querySelector('.clear');
@@ -37,16 +37,18 @@ input.addEventListener('keyup', (e) => {
   }
 });
 
+// clearing the completed tasks
 clear.addEventListener('click', () => {
   todoList = clearCompleted(todoList);
   addData(todoList);
   populateList(displayTodos(todoList));
 });
 
+// reloading the page
+refreshLogo.addEventListener('click', () => {
+  // eslint-disable-next-line no-restricted-globals
+  location.reload();
+});
+
 // calling the function to display
 if (todoList.length) populateList(displayTodos(todoList));
-window.onload = () => {
-  // checkBox.checked === checkBox.checked;
-  getData(todoList);
-  // populateList(displayTodos(todoList));
-};

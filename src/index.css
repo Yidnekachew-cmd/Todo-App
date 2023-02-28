@@ -22,7 +22,7 @@ section {
   height: auto;
   margin: 0 auto;
   margin: 18%;
-  background-color: #03dac6;
+  background-color: #45adff;
   border-radius: 1rem;
 }
 
@@ -58,7 +58,7 @@ hr {
   border: 0.5px solid #f3ebdc;
   font-size: 1.2rem;
   font-style: italic;
-  outline-color: rgb(125, 231, 255);
+  outline-color: #70b9f0;
   padding: 1rem;
 }
 
@@ -70,7 +70,7 @@ hr {
 }
 
 .add:hover {
-  background-color: rgb(125, 231, 255);
+  background-color: #7cbff2;
   transition: 0.3s ease-in-out;
 }
 

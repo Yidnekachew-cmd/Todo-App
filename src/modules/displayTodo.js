@@ -34,6 +34,7 @@ const displayTodos = (todoList) => {
     checkBox.className = 'checkbox';
     checkBox.name = 'checkbox';
     checkBox.checked = myTodo.completed;
+    checkBox.style.cursor = 'pointer';
 
     // assigning paragraph for each list
     const para = document.createElement('input');
@@ -44,6 +45,7 @@ const displayTodos = (todoList) => {
     para.style.border = 'none';
     para.style.outlineColor = 'rgb(125, 231, 255)';
     para.style.textDecoration = myTodo.completed ? 'line-through' : 'none';
+    para.style.textDecorationColor = '#ff8975';
 
     para.addEventListener('input', () => {
       todoList[index].description = para.value;
@@ -53,6 +55,7 @@ const displayTodos = (todoList) => {
     checkBox.addEventListener('change', () => {
       myTodo.completed = !myTodo.completed;
       para.style.textDecoration = myTodo.completed ? 'line-through' : 'none';
+      para.style.textDecorationColor = '#ff8975';
       addData(todoList);
     });
 
